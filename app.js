@@ -12,7 +12,10 @@ const inputFile = path.join("input_dir", `${moment().format("YYYY-MM-DD")}.lst`)
 sequelize.sync()
     .then(() => {
         fs.readFile(inputFile, {encoding: "utf-8"}, async (fileError, fileContent) => {
-            if (fileError) throw fileError;
+            if (fileError) {
+                console.log(fileError)
+                return
+            }
             if (!fileContent) return
             const data = fileContent.trim().split("\n");
             if (data.length > 0) {
