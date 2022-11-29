@@ -13,7 +13,7 @@ sequelize.sync()
     .then(() => {
         fs.readFile(inputFile, {encoding: "utf-8"}, async (fileError, fileContent) => {
             if (fileError) throw fileError;
-            if (!data) return
+            if (!fileContent) return
             const data = fileContent.trim().split("\n");
             if (data.length > 0) {
                 let finalArray = []
